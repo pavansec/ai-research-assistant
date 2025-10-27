@@ -1,0 +1,20 @@
+# Python virtual environment
+venv/
+/venv/
+*.pyc
+__pycache__/
+
+# Secrets (like API keys - NEVER commit these!)
+# If you stored keys directly in .py files, remove them and use environment variables instead!
+# If you used a .env file (good practice), add it here:
+# .env
+
+# Downloaded PDFs (temporary)
+downloaded_pdfs/
+
+# VS Code specific
+.vscode/
+
+# OS specific
+.DS_Store
+Thumbs.db
