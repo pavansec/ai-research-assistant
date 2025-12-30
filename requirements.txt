@@ -7,3 +7,4 @@ arxiv
 langgraph
 fastapi[all]
 uvicorn[standard]
+aiofiles

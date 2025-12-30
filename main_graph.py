@@ -14,8 +14,8 @@ import arxiv # Make sure arxiv is imported
 from langgraph.graph import StateGraph, END
 
 # --- Configuration ---
-GEMINI_API_KEY = "" # <-- PUT YOUR GEMINI API KEY HERE
-SEMANTIC_SCHOLAR_API_KEY = "" # <-- PUT YOUR SEMANTIC SCHOLAR KEY HERE
+GEMINI_API_KEY = "AIzaSyB2b3EcGRKk48JDEnxQ02gtQSbe-EI1mgU" # <-- PUT YOUR GEMINI API KEY HERE
+SEMANTIC_SCHOLAR_API_KEY = "Pjn8hPFeCs62sBhLSUZX42UYCbMQ6nlS4xQgXTgm" # <-- PUT YOUR SEMANTIC SCHOLAR KEY HERE
 GEMINI_MODEL_NAME = "models/gemini-2.5-flash"
 SEMANTIC_SCHOLAR_API_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
 PDF_DOWNLOAD_DIR = "downloaded_pdfs" # Directory to save PDFs temporarily

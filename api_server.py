@@ -2,6 +2,8 @@ from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware # <--- Ensure this import is present
 from pydantic import BaseModel
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 import os
 import uuid # To generate unique IDs for concurrent runs
 
@@ -48,7 +50,7 @@ app.add_middleware(
     allow_headers=["*"], # Allow all headers
 )
 # --- END OF ADDED CORS SECTION ---
-
+app.mount("/static", StaticFiles(directory="."), name="static")
 
 # --- In-memory storage for results (simple approach for this project) ---
 # ... (rest of the code remains exactly the same as you posted) ...
@@ -154,7 +156,10 @@ async def get_results(task_id: str):
     else:
          raise HTTPException(status_code=500, detail="Unknown task status.")
 
-# --- Simple Root Endpoint ---
+# --- Serve the Frontend ---
 @app.get("/")
-async def root():
-    return {"message": "AI Research Assistant API is running."}
+async def read_index():
+    # Ensure index.html exists in the same folder
+    if os.path.exists('index.html'):
+        return FileResponse('index.html')
+    return {"message": "index.html not found. API is running."}
