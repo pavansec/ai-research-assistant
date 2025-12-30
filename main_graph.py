@@ -12,14 +12,25 @@ import arxiv # Make sure arxiv is imported
 
 # Import LangGraph components
 from langgraph.graph import StateGraph, END
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+SEMANTIC_SCHOLAR_API_KEY = os.getenv("SEMANTIC_SCHOLAR_API_KEY")
 
-# --- Configuration ---
-GEMINI_API_KEY = "AIzaSyB2b3EcGRKk48JDEnxQ02gtQSbe-EI1mgU" # <-- PUT YOUR GEMINI API KEY HERE
-SEMANTIC_SCHOLAR_API_KEY = "Pjn8hPFeCs62sBhLSUZX42UYCbMQ6nlS4xQgXTgm" # <-- PUT YOUR SEMANTIC SCHOLAR KEY HERE
-GEMINI_MODEL_NAME = "models/gemini-2.5-flash"
+# 2. Add a safety check (Optional but good for debugging)
+if not GEMINI_API_KEY:
+    print("WARNING: GEMINI_API_KEY not found in environment variables!")
+
+if not SEMANTIC_SCHOLAR_API_KEY:
+    print("WARNING: SEMANTIC_SCHOLAR_API_KEY not found in environment variables!")
+
+# 3. Configure Gemini immediately
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
+
+# Rest of your config
+GEMINI_MODEL_NAME = "gemini-1.5-flash" # Note: '2.5' might not exist yet, usually it's 1.5-flash or 1.5-pro
 SEMANTIC_SCHOLAR_API_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
-PDF_DOWNLOAD_DIR = "downloaded_pdfs" # Directory to save PDFs temporarily
-OUTPUT_REPORT_NAME = "AI_Generated_Research_Report_Reverted_Enhanced.docx" # New filename
+PDF_DOWNLOAD_DIR = "downloaded_pdfs" 
+OUTPUT_REPORT_NAME = "AI_Generated_Research_Report.docx"
 
 # --- State Definition (Includes topic_overview) ---
 class ResearchState(TypedDict):
