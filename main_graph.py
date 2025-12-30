@@ -27,7 +27,7 @@ if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
 
 # Rest of your config
-GEMINI_MODEL_NAME = "gemini-1.5-flash" # Note: '2.5' might not exist yet, usually it's 1.5-flash or 1.5-pro
+GEMINI_MODEL_NAME = "models/gemini-2.5-flash" # Note: '2.5' might not exist yet, usually it's 1.5-flash or 1.5-pro
 SEMANTIC_SCHOLAR_API_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
 PDF_DOWNLOAD_DIR = "downloaded_pdfs" 
 OUTPUT_REPORT_NAME = "AI_Generated_Research_Report.docx"
